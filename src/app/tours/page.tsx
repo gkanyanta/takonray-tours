@@ -65,7 +65,7 @@ const fallbackTours = [
     maxGroupSize: 8,
     difficulty: "Extreme",
     images: [
-      "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=600&h=400&fit=crop",
+      "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=600&h=400&fit=crop",
     ],
     featured: false,
     category: { name: "Adventure", slug: "adventure" },

@@ -115,7 +115,7 @@ async function main() {
         slug: "adventure-activities",
         description:
           "Get your adrenaline pumping with thrilling activities at Victoria Falls — bungee jumping, white-water rafting, zip-lining, and more.",
-        image: "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=800&h=600&fit=crop",
+        image: "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&h=600&fit=crop",
       },
     }),
     prisma.tourCategory.create({
@@ -229,7 +229,7 @@ async function main() {
         difficulty: "Extreme",
         includes: ["Bridge access", "Bungee jump", "Safety equipment", "Certificate", "Light refreshments"],
         excludes: ["Video/photo package", "Transport to bridge", "Gratuities"],
-        images: ["https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=800&h=600&fit=crop"],
+        images: ["https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&h=600&fit=crop"],
         featured: true,
         categoryId: adventureCat.id,
       },
@@ -843,7 +843,7 @@ async function main() {
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1549366021-9f761d450615?w=800&h=600&fit=crop", caption: "Elephant herd crossing the Chobe River", category: "Wildlife", order: 4 } }),
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=800&h=600&fit=crop", caption: "Male lion in Chobe National Park", category: "Wildlife", order: 5 } }),
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=800&h=600&fit=crop", caption: "Hippos in the Upper Zambezi", category: "Wildlife", order: 6 } }),
-    prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=800&h=600&fit=crop", caption: "Bungee jumping off Victoria Falls Bridge", category: "Adventure", order: 7 } }),
+    prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&h=600&fit=crop", caption: "Bungee jumping off Victoria Falls Bridge", category: "Adventure", order: 7 } }),
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1530866495561-507c83091b04?w=800&h=600&fit=crop", caption: "Tackling Grade 5 rapids on the Zambezi", category: "Adventure", order: 8 } }),
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=800&h=600&fit=crop", caption: "Traditional dance at Mukuni Village", category: "Culture", order: 9 } }),
     prisma.galleryImage.create({ data: { url: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop", caption: "Guests enjoying a Zambezi sunset cruise", category: "River", order: 10 } }),

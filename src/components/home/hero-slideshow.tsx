@@ -24,7 +24,7 @@ const slides = [
   },
   {
     image:
-      "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=1920&h=1080&fit=crop",
+      "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=1920&h=1080&fit=crop",
     title: "Bungee Jumping",
     subtitle: "111m Above the Zambezi Gorge",
   },

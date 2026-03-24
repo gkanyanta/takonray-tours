@@ -29,7 +29,7 @@ const fallbackImages = [
   },
   {
     id: "4",
-    url: "https://images.unsplash.com/photo-1540039455722-5dfc077e8af0?w=800&h=600&fit=crop",
+    url: "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&h=600&fit=crop",
     caption: "Bungee jumping from Victoria Falls Bridge",
     category: "Activities",
   },
