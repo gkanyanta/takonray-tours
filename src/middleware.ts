@@ -1,43 +1,32 @@
-import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
-const protectedRoutes = ["/portal"];
-const adminRoutes = ["/admin"];
+export async function middleware(req: NextRequest) {
+  const { pathname } = req.nextUrl;
 
-export default auth((req) => {
-  const { nextUrl } = req;
-  const isLoggedIn = !!req.auth;
-  const userRole = req.auth?.user?.role;
+  const token = await getToken({ req, secret: process.env.AUTH_SECRET });
 
-  const isProtectedRoute = protectedRoutes.some((route) =>
-    nextUrl.pathname.startsWith(route)
-  );
-  const isAdminRoute = adminRoutes.some((route) =>
-    nextUrl.pathname.startsWith(route)
-  );
+  const isProtectedRoute = pathname.startsWith("/portal");
+  const isAdminRoute = pathname.startsWith("/admin");
 
   // Redirect unauthenticated users to login
-  if (isProtectedRoute && !isLoggedIn) {
-    const loginUrl = new URL("/login", nextUrl.origin);
-    loginUrl.searchParams.set("callbackUrl", nextUrl.pathname);
+  if ((isProtectedRoute || isAdminRoute) && !token) {
+    const loginUrl = new URL("/login", req.url);
+    loginUrl.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(loginUrl);
   }
 
   // Admin routes require ADMIN or SUPER_ADMIN role
-  if (isAdminRoute) {
-    if (!isLoggedIn) {
-      const loginUrl = new URL("/login", nextUrl.origin);
-      loginUrl.searchParams.set("callbackUrl", nextUrl.pathname);
-      return NextResponse.redirect(loginUrl);
-    }
-
-    if (userRole !== "ADMIN" && userRole !== "SUPER_ADMIN") {
-      return NextResponse.redirect(new URL("/", nextUrl.origin));
+  if (isAdminRoute && token) {
+    const role = token.role as string;
+    if (role !== "ADMIN" && role !== "SUPER_ADMIN") {
+      return NextResponse.redirect(new URL("/", req.url));
     }
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/portal/:path*", "/admin/:path*"],

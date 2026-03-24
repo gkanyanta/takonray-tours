@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { AccommodationCard } from "@/components/accommodation-card";
 import { AccommodationFilters } from "@/components/accommodations/accommodation-filters";

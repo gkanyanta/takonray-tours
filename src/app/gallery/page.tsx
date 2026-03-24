@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { GalleryGrid } from "@/components/gallery/gallery-grid";
 
 export const metadata = {
