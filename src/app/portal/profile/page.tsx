@@ -224,7 +224,7 @@ export default function ProfilePage() {
                   id="phone"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+260 XXX XXX XXX"
+                  placeholder="+260 974 600 016"
                   className="mt-1.5"
                 />
               </div>

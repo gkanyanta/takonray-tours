@@ -104,7 +104,7 @@ export function SettingsForm({
                     onChange={(e) =>
                       handleChange("contact_phone", e.target.value)
                     }
-                    placeholder="+260 XXX XXX XXX"
+                    placeholder="+260 974 600 016"
                   />
                 </div>
               </div>
@@ -125,7 +125,7 @@ export function SettingsForm({
                   onChange={(e) =>
                     handleChange("whatsapp_number", e.target.value)
                   }
-                  placeholder="+260XXXXXXXXX"
+                  placeholder="+260974600016"
                 />
               </div>
             </CardContent>

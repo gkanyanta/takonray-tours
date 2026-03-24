@@ -76,10 +76,10 @@ export default function ContactPage() {
                       Phone
                     </p>
                     <a
-                      href="tel:+260977123456"
+                      href="tel:+260974600016"
                       className="text-sm text-muted-foreground hover:text-brand-teal"
                     >
-                      +260 977 123 456
+                      +260 974 600 016
                     </a>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="text-sm text-muted-foreground hover:text-green-600"
                     >
-                      +260 977 123 456
+                      +260 974 600 016
                     </a>
                     <p className="text-xs text-muted-foreground">
                       Chat with us directly

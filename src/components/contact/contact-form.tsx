@@ -152,7 +152,7 @@ export function ContactForm() {
               type="tel"
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
-              placeholder="+260 97 XXX XXXX"
+              placeholder="+260 974 600 016"
               className="mt-1"
             />
           </div>

@@ -399,7 +399,7 @@ export default function AccommodationBookingPage() {
                         id="phone"
                         value={contactPhone}
                         onChange={(e) => setContactPhone(e.target.value)}
-                        placeholder="+260 XXX XXX XXX"
+                        placeholder="+260 974 600 016"
                         className="mt-1"
                       />
                     </div>

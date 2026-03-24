@@ -57,7 +57,7 @@ function baseLayout(content: string): string {
     </div>
     <div class="footer">
       <p>Takonray Tours &bull; Livingstone, Zambia</p>
-      <p>Questions? Reply to this email or WhatsApp us at +260 XXX XXXXXX</p>
+      <p>Questions? Reply to this email or WhatsApp us at +260 974 600 016</p>
     </div>
   </div>
 </body>
