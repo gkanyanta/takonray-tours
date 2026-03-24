@@ -24,60 +24,108 @@ export const metadata = {
   title: "Tour Details | Takonray Tours",
 };
 
-const fallbackTour = {
-  id: "1",
-  name: "Victoria Falls Guided Tour",
-  slug: "victoria-falls-guided-tour",
-  description:
-    "Experience the awe-inspiring power and beauty of Victoria Falls, locally known as Mosi-oa-Tunya — 'The Smoke That Thunders.' This guided walking tour takes you along the famous rainforest trail on the Zambian side, offering breathtaking panoramic views of the world's largest curtain of falling water.\n\nYour expert local guide will share fascinating stories about the geological formation of the falls, the history of David Livingstone's exploration, and the cultural significance of this natural wonder to the Tonga people. During the peak water season (February to May), you'll experience the full force of the Zambezi River plunging 108 meters into the gorge below, creating a mist that rises over 400 meters into the sky.\n\nThe tour includes entry to the Victoria Falls National Park, where you'll visit all the major viewpoints including the Knife Edge Bridge, where you'll be surrounded by spray from the Eastern Cataract. Keep your camera in a waterproof bag — you will get wet!",
-  highlights: [
-    "Panoramic views from 16 viewpoints along the gorge",
-    "Walk across the iconic Knife Edge Bridge",
-    "Expert commentary on geology, history, and local culture",
-    "Visit the David Livingstone statue",
-    "Spot rainbows in the mist (sunny days)",
-    "Optional helicopter flight upgrade for aerial views",
-  ],
-  duration: "3 hours",
-  maxGroupSize: 12,
-  difficulty: "Easy",
-  includes: [
-    "National Park entry fee",
-    "Professional English-speaking guide",
-    "Raincoat and poncho",
-    "Hotel pickup and drop-off",
-    "Bottled water",
-  ],
-  excludes: [
-    "Gratuities (optional)",
-    "Personal expenses",
-    "Travel insurance",
-    "Helicopter flight upgrade",
-  ],
-  images: [
-    "https://images.unsplash.com/photo-1568625502763-2a5ec6a94c47?w=1200&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&h=800&fit=crop",
-    "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&h=800&fit=crop",
-  ],
-  featured: true,
-  category: { name: "Sightseeing", slug: "sightseeing" },
-  pricing: [
-    { tier: "LOCAL", season: "PEAK", price: 25 },
-    { tier: "LOCAL", season: "HIGH", price: 20 },
-    { tier: "LOCAL", season: "LOW", price: 15 },
-    { tier: "SADC", season: "PEAK", price: 35 },
-    { tier: "SADC", season: "HIGH", price: 30 },
-    { tier: "SADC", season: "LOW", price: 25 },
-    { tier: "INTERNATIONAL", season: "PEAK", price: 55 },
-    { tier: "INTERNATIONAL", season: "HIGH", price: 45 },
-    { tier: "INTERNATIONAL", season: "LOW", price: 35 },
-  ],
-  addOns: [
-    {
-      id: "a1",
-      name: "Helicopter Flight (15 min)",
-      description: "Aerial view of the falls and Batoka Gorge",
-      price: 150,
+function makeFallbackTour(data: {
+  id: string; name: string; slug: string; description: string;
+  highlights: string[]; duration: string; maxGroupSize: number; difficulty: string;
+  includes: string[]; excludes: string[]; images: string[];
+  category: { name: string; slug: string };
+  basePrice: number;
+}) {
+  return {
+    ...data,
+    featured: true,
+    pricing: [
+      { tier: "LOCAL", season: "PEAK", price: Math.round(data.basePrice * 0.5) },
+      { tier: "LOCAL", season: "HIGH", price: Math.round(data.basePrice * 0.4) },
+      { tier: "LOCAL", season: "LOW", price: Math.round(data.basePrice * 0.3) },
+      { tier: "SADC", season: "PEAK", price: Math.round(data.basePrice * 0.7) },
+      { tier: "SADC", season: "HIGH", price: Math.round(data.basePrice * 0.6) },
+      { tier: "SADC", season: "LOW", price: Math.round(data.basePrice * 0.5) },
+      { tier: "INTERNATIONAL", season: "PEAK", price: data.basePrice },
+      { tier: "INTERNATIONAL", season: "HIGH", price: Math.round(data.basePrice * 0.85) },
+      { tier: "INTERNATIONAL", season: "LOW", price: Math.round(data.basePrice * 0.7) },
+    ],
+    addOns: [] as { id: string; name: string; description: string; price: number }[],
+    reviews: [
+      { id: "r1", rating: 5, comment: "Amazing experience! Highly recommend this tour to anyone visiting Livingstone.", createdAt: "2025-11-15", user: { name: "Sarah Thompson", image: null } },
+      { id: "r2", rating: 5, comment: "Our guide was incredibly knowledgeable and passionate. Made the whole experience unforgettable.", createdAt: "2025-10-22", user: { name: "David Chen", image: null } },
+      { id: "r3", rating: 4, comment: "Well organized tour with beautiful scenery. Would definitely come back!", createdAt: "2025-09-08", user: { name: "Maria Gonzalez", image: null } },
+    ],
+  };
+}
+
+const fallbackTours: Record<string, ReturnType<typeof makeFallbackTour>> = {
+  "victoria-falls-guided-tour": makeFallbackTour({
+    id: "1", name: "Victoria Falls Guided Tour", slug: "victoria-falls-guided-tour",
+    description: "Experience the awe-inspiring power and beauty of Victoria Falls, locally known as Mosi-oa-Tunya — 'The Smoke That Thunders.' This guided walking tour takes you along the famous rainforest trail on the Zambian side, offering breathtaking panoramic views of the world's largest curtain of falling water.\n\nYour expert local guide will share fascinating stories about the geological formation of the falls, the history of David Livingstone's exploration, and the cultural significance of this natural wonder to the Tonga people.\n\nThe tour includes entry to the Victoria Falls National Park, where you'll visit all the major viewpoints including the Knife Edge Bridge. Keep your camera in a waterproof bag — you will get wet!",
+    highlights: ["Panoramic views from 16 viewpoints along the gorge", "Walk across the iconic Knife Edge Bridge", "Expert commentary on geology, history, and local culture", "Visit the David Livingstone statue", "Spot rainbows in the mist (sunny days)", "Optional helicopter flight upgrade"],
+    duration: "3 hours", maxGroupSize: 12, difficulty: "Easy",
+    includes: ["National Park entry fee", "Professional English-speaking guide", "Raincoat and poncho", "Hotel pickup and drop-off", "Bottled water"],
+    excludes: ["Gratuities (optional)", "Personal expenses", "Travel insurance", "Helicopter flight upgrade"],
+    images: ["https://images.unsplash.com/photo-1568625502763-2a5ec6a94c47?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1200&h=800&fit=crop"],
+    category: { name: "Sightseeing", slug: "sightseeing" }, basePrice: 55,
+  }),
+  "zambezi-sunset-cruise": makeFallbackTour({
+    id: "2", name: "Zambezi River Sunset Cruise", slug: "zambezi-sunset-cruise",
+    description: "Cruise along the mighty Zambezi River as the African sun paints the sky in brilliant shades of gold and crimson. This unforgettable evening experience combines wildlife viewing with relaxation aboard a comfortable cruise boat.\n\nAs you glide upstream from the Royal Livingstone jetty, keep your eyes peeled for hippos, crocodiles, and elephants that frequent the riverbanks. Your onboard guide will point out the diverse birdlife, including the majestic African fish eagle.\n\nEnjoy complimentary drinks and snacks as you watch one of Africa's most spectacular sunsets. The cruise returns under the stars for a truly magical conclusion to the day.",
+    highlights: ["Stunning Zambezi River sunset views", "Wildlife spotting — hippos, elephants, crocodiles", "Complimentary drinks and snacks", "Expert guide with bird and wildlife knowledge", "Photo opportunities at golden hour", "Calm and relaxing river experience"],
+    duration: "2.5 hours", maxGroupSize: 16, difficulty: "Easy",
+    includes: ["Cruise boat with comfortable seating", "Complimentary drinks and snacks", "Professional guide", "Hotel pickup and drop-off"],
+    excludes: ["Gratuities", "Personal expenses", "Premium drinks"],
+    images: ["https://images.unsplash.com/photo-1516426122078-c23e76319801?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=1200&h=800&fit=crop"],
+    category: { name: "River Activities", slug: "river-activities" }, basePrice: 65,
+  }),
+  "bungee-jumping-victoria-falls": makeFallbackTour({
+    id: "3", name: "Bungee Jumping at Victoria Falls Bridge", slug: "bungee-jumping-victoria-falls",
+    description: "Take the ultimate leap of faith from the iconic Victoria Falls Bridge, suspended 111 meters above the churning waters of the Zambezi River gorge. This is one of the world's highest commercial bungee jumps and an absolute must for adrenaline junkies.\n\nThe bridge straddles the border between Zambia and Zimbabwe, offering jaw-dropping views of the falls and the Batoka Gorge. After a thorough safety briefing from experienced jump masters, you'll step to the edge and take the plunge of a lifetime.\n\nThe freefall lasts about 4 seconds before the cord catches you, bouncing you above the raging rapids below. A GoPro video of your jump is available for purchase.",
+    highlights: ["111-meter freefall from Victoria Falls Bridge", "Breathtaking views of the Batoka Gorge", "Professional safety equipment and briefing", "Certificate of completion", "Optional GoPro video package", "Border-straddling jump between two countries"],
+    duration: "1 hour", maxGroupSize: 8, difficulty: "Extreme",
+    includes: ["Bungee jump", "Safety equipment and briefing", "Jump certificate", "Border crossing assistance"],
+    excludes: ["GoPro video (available for purchase)", "Transport to bridge", "Gratuities"],
+    images: ["https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1534177616064-76c28f23711e?w=1200&h=800&fit=crop"],
+    category: { name: "Adventure", slug: "adventure" }, basePrice: 160,
+  }),
+  "chobe-national-park-day-trip": makeFallbackTour({
+    id: "4", name: "Chobe National Park Day Trip", slug: "chobe-national-park-day-trip",
+    description: "Cross the border into Botswana for an unforgettable full day of wildlife viewing in Chobe National Park — home to Africa's largest elephant population, estimated at over 120,000.\n\nYour day begins with an early morning game drive through the park's diverse habitats, from riverine woodland to open savanna. Expect to see large herds of elephants, buffalo, giraffes, zebras, and with luck, lions and leopards.\n\nAfter a riverside lunch, board a boat for an afternoon cruise along the Chobe River, where you'll get incredibly close to elephants swimming and drinking at the water's edge. The birdlife is spectacular, with over 450 species recorded in the park.",
+    highlights: ["Morning game drive through Chobe", "Afternoon boat cruise on Chobe River", "Africa's largest elephant population", "Big Five wildlife viewing potential", "Riverside lunch included", "Professional wildlife guide"],
+    duration: "Full Day", maxGroupSize: 10, difficulty: "Moderate",
+    includes: ["Return transfers from Livingstone", "Park entry fees", "Game drive vehicle", "Boat cruise", "Lunch and bottled water", "Border crossing fees", "Professional guide"],
+    excludes: ["Visa fees (if applicable)", "Gratuities", "Personal items", "Travel insurance"],
+    images: ["https://images.unsplash.com/photo-1549366021-9f761d450615?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1517960413843-0aee8e2b3285?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=1200&h=800&fit=crop"],
+    category: { name: "Wildlife Safari", slug: "wildlife-safari" }, basePrice: 195,
+  }),
+  "white-water-rafting-zambezi": makeFallbackTour({
+    id: "5", name: "White Water Rafting - Zambezi Rapids", slug: "white-water-rafting-zambezi",
+    description: "Tackle the famous Grade 5 rapids of the Zambezi River below Victoria Falls — widely regarded as one of the world's best one-day white water rafting experiences.\n\nThe Batoka Gorge creates an incredible series of rapids with names like 'The Washing Machine,' 'Oblivion,' and 'Stairway to Heaven.' Your experienced river guides will navigate you through up to 25 rapids over the course of the day.\n\nNo previous rafting experience is needed — just a sense of adventure and the ability to swim. Safety kayakers accompany every trip. Between rapids, float through calm pools and marvel at the dramatic 200-meter gorge walls towering above you.",
+    highlights: ["Up to 25 rapids including Grade 5", "World-class Batoka Gorge scenery", "Experienced safety-certified guides", "Riverside lunch in the gorge", "No experience necessary", "Safety kayakers on every trip"],
+    duration: "Full Day", maxGroupSize: 12, difficulty: "Challenging",
+    includes: ["All rafting equipment", "Safety briefing and training", "Professional river guides", "Lunch and drinks", "Transfer back to top of gorge"],
+    excludes: ["Transport to put-in point", "Photos and videos (available for purchase)", "Gratuities"],
+    images: ["https://images.unsplash.com/photo-1530866495561-507c83091b04?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&h=800&fit=crop"],
+    category: { name: "Adventure", slug: "adventure" }, basePrice: 150,
+  }),
+  "livingstone-cultural-village-tour": makeFallbackTour({
+    id: "6", name: "Livingstone Cultural Village Tour", slug: "livingstone-cultural-village-tour",
+    description: "Visit a traditional Zambian village near Livingstone and experience the authentic customs, music, dance, and daily life of the local Tonga and Lozi communities.\n\nYour village host will welcome you with a traditional greeting and lead you through the homestead, explaining the significance of different huts, the cooking area, and the community meeting space. Watch local artisans at work — basket weaving, wood carving, and pottery making.\n\nParticipate in traditional drumming and dancing, taste locally prepared food including nshima (the Zambian staple), and hear stories of local history and folklore. A portion of all tour fees goes directly to community development projects.",
+    highlights: ["Authentic village homestead visit", "Traditional drumming and dancing", "Taste local Zambian cuisine including nshima", "Watch artisans: basket weaving, wood carving", "Community-supported tourism", "Learn about Tonga and Lozi traditions"],
+    duration: "3 hours", maxGroupSize: 15, difficulty: "Easy",
+    includes: ["Village entry and cultural fee", "Local guide and translator", "Traditional food tasting", "Hotel pickup and drop-off"],
+    excludes: ["Gratuities", "Craft purchases", "Personal expenses"],
+    images: ["https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1489392191049-fc10c97e64b6?w=1200&h=800&fit=crop"],
+    category: { name: "Cultural", slug: "cultural" }, basePrice: 35,
+  }),
+};
+
+const fallbackTour = fallbackTours["victoria-falls-guided-tour"]!;
+
+// Add specific add-ons to the Victoria Falls tour
+fallbackTour.addOns = [
+  {
+    id: "a1",
+    name: "Helicopter Flight (15 min)",
+    description: "Aerial view of the falls and Batoka Gorge",
+    price: 150,
     },
     {
       id: "a2",
@@ -91,34 +139,7 @@ const fallbackTour = {
       description: "Meal at a restaurant overlooking the gorge",
       price: 25,
     },
-  ],
-  reviews: [
-    {
-      id: "r1",
-      rating: 5,
-      comment:
-        "The most incredible natural sight I have ever seen. Our guide Mwamba was absolutely fantastic — his knowledge and passion made the experience even more special.",
-      createdAt: "2025-11-15",
-      user: { name: "Sarah Thompson", image: null },
-    },
-    {
-      id: "r2",
-      rating: 5,
-      comment:
-        "Visiting during peak water season was magical. The sheer power of the falls is indescribable. The raincoats provided were essential — we got completely soaked!",
-      createdAt: "2025-10-22",
-      user: { name: "David Chen", image: null },
-    },
-    {
-      id: "r3",
-      rating: 4,
-      comment:
-        "Great tour with beautiful views. The guide was informative and friendly. Would recommend the helicopter add-on for truly breathtaking aerial views.",
-      createdAt: "2025-09-08",
-      user: { name: "Maria Gonzalez", image: null },
-    },
-  ],
-};
+];
 
 async function getTour(slug: string) {
   try {
@@ -138,8 +159,7 @@ async function getTour(slug: string) {
     });
     return tour;
   } catch {
-    if (slug === fallbackTour.slug) return fallbackTour;
-    return null;
+    return fallbackTours[slug] ?? null;
   }
 }
 
@@ -152,7 +172,7 @@ export async function generateStaticParams() {
     });
     return tours.map((t) => ({ slug: t.slug }));
   } catch {
-    return [{ slug: "victoria-falls-guided-tour" }];
+    return Object.keys(fallbackTours).map((slug) => ({ slug }));
   }
 }
 

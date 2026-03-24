@@ -157,6 +157,90 @@ const fallbackAccommodation = {
   ],
 };
 
+const fallbackAccommodations: Record<string, typeof fallbackAccommodation> = {
+  "royal-livingstone-hotel": fallbackAccommodation,
+  "bushfront-lodge": {
+    ...fallbackAccommodation, id: "2", name: "Bushfront Lodge", slug: "bushfront-lodge",
+    description: "A charming bush lodge offering authentic African hospitality surrounded by indigenous trees and abundant birdlife. Located just 5 minutes from Victoria Falls, Bushfront Lodge provides a tranquil retreat with the convenience of being close to all attractions.\n\nEach room is tastefully decorated with African touches and opens onto a private veranda overlooking the lush garden. The lodge features a sparkling swimming pool, an outdoor boma for evening dining, and a cozy lounge with a well-stocked bar.\n\nThe friendly staff go out of their way to make your stay memorable, from arranging tours to preparing delicious home-cooked meals.",
+    type: "lodge", address: "Nakatindi Road, Livingstone, Zambia",
+    amenities: ["WiFi", "Pool", "Garden", "Breakfast", "Parking", "Bar", "Laundry"],
+    images: ["https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&h=800&fit=crop"],
+    rating: 4.5,
+    roomTypes: [
+      { id: "rt1", name: "Standard Double Room", description: "Comfortable room with double bed and garden views.", maxOccupancy: 2, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 60 }, { tier: "LOCAL", season: "HIGH", price: 50 }, { tier: "LOCAL", season: "LOW", price: 40 },
+        { tier: "SADC", season: "PEAK", price: 80 }, { tier: "SADC", season: "HIGH", price: 65 }, { tier: "SADC", season: "LOW", price: 55 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 120 }, { tier: "INTERNATIONAL", season: "HIGH", price: 95 }, { tier: "INTERNATIONAL", season: "LOW", price: 75 },
+      ]},
+      { id: "rt2", name: "Family Chalet", description: "Spacious chalet with two bedrooms, ideal for families.", maxOccupancy: 4, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 100 }, { tier: "LOCAL", season: "HIGH", price: 85 }, { tier: "LOCAL", season: "LOW", price: 70 },
+        { tier: "SADC", season: "PEAK", price: 130 }, { tier: "SADC", season: "HIGH", price: 110 }, { tier: "SADC", season: "LOW", price: 90 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 180 }, { tier: "INTERNATIONAL", season: "HIGH", price: 150 }, { tier: "INTERNATIONAL", season: "LOW", price: 120 },
+      ]},
+    ],
+  },
+  "zambezi-waterfront": {
+    ...fallbackAccommodation, id: "3", name: "Zambezi Waterfront", slug: "zambezi-waterfront",
+    description: "Located right on the Zambezi River with stunning sunset views, the Zambezi Waterfront offers a range of accommodation from luxury chalets to camping. Perfect for both adventure seekers and those looking for a peaceful riverside retreat.\n\nThe property features a popular restaurant and bar right on the riverbank, a swimming pool, and direct river access for canoeing and fishing. Watch hippos surface at sunset while enjoying a cold drink on the deck.",
+    type: "lodge", address: "Sichango Road, Livingstone, Zambia",
+    amenities: ["WiFi", "Restaurant", "Bar", "River Front", "Parking", "Pool", "Camping"],
+    images: ["https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop"],
+    rating: 4.6,
+    roomTypes: [
+      { id: "rt1", name: "Riverside Chalet", description: "Private chalet with river views and outdoor seating area.", maxOccupancy: 2, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 90 }, { tier: "LOCAL", season: "HIGH", price: 75 }, { tier: "LOCAL", season: "LOW", price: 60 },
+        { tier: "SADC", season: "PEAK", price: 120 }, { tier: "SADC", season: "HIGH", price: 100 }, { tier: "SADC", season: "LOW", price: 80 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 180 }, { tier: "INTERNATIONAL", season: "HIGH", price: 145 }, { tier: "INTERNATIONAL", season: "LOW", price: 115 },
+      ]},
+    ],
+  },
+  "jollyboys-backpackers": {
+    ...fallbackAccommodation, id: "4", name: "Jollyboys Backpackers", slug: "jollyboys-backpackers",
+    description: "Livingstone's most popular backpackers hostel, set in a beautifully restored colonial house in the heart of town. Jollyboys is the social hub for budget travellers, with a lively bar, swimming pool, and an unbeatable atmosphere.\n\nChoose from dorms or private rooms, all clean and well-maintained. The on-site travel desk can arrange every activity in Livingstone at competitive prices.",
+    type: "guesthouse", address: "34 Kanyanta Road, Livingstone, Zambia",
+    amenities: ["WiFi", "Pool", "Bar", "Kitchen", "Laundry", "Parking"],
+    images: ["https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=1200&h=800&fit=crop"],
+    rating: 4.3,
+    roomTypes: [
+      { id: "rt1", name: "Private Double", description: "Private room with double bed and en-suite bathroom.", maxOccupancy: 2, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 35 }, { tier: "LOCAL", season: "HIGH", price: 30 }, { tier: "LOCAL", season: "LOW", price: 25 },
+        { tier: "SADC", season: "PEAK", price: 45 }, { tier: "SADC", season: "HIGH", price: 38 }, { tier: "SADC", season: "LOW", price: 32 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 60 }, { tier: "INTERNATIONAL", season: "HIGH", price: 50 }, { tier: "INTERNATIONAL", season: "LOW", price: 40 },
+      ]},
+    ],
+  },
+  "thorntree-river-lodge": {
+    ...fallbackAccommodation, id: "5", name: "Thorntree River Lodge", slug: "thorntree-river-lodge",
+    description: "An exclusive luxury lodge set within the Mosi-oa-Tunya National Park on the banks of the Zambezi River. Thorntree River Lodge combines contemporary African design with world-class hospitality.\n\nEach suite features floor-to-ceiling windows, a private plunge pool, and an outdoor shower. Wildlife roams freely through the grounds — expect visits from warthogs, monkeys, and the occasional elephant.",
+    type: "lodge", address: "Mosi-oa-Tunya National Park, Livingstone, Zambia",
+    amenities: ["WiFi", "Pool", "Restaurant", "Spa", "River View", "Bar", "Gym"],
+    images: ["https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=800&fit=crop"],
+    rating: 4.9,
+    roomTypes: [
+      { id: "rt1", name: "River Suite", description: "Luxury suite with plunge pool and panoramic Zambezi views.", maxOccupancy: 2, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 280 }, { tier: "LOCAL", season: "HIGH", price: 230 }, { tier: "LOCAL", season: "LOW", price: 180 },
+        { tier: "SADC", season: "PEAK", price: 380 }, { tier: "SADC", season: "HIGH", price: 320 }, { tier: "SADC", season: "LOW", price: 260 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 550 }, { tier: "INTERNATIONAL", season: "HIGH", price: 450 }, { tier: "INTERNATIONAL", season: "LOW", price: 360 },
+      ]},
+    ],
+  },
+  "maramba-river-lodge": {
+    ...fallbackAccommodation, id: "6", name: "Maramba River Lodge", slug: "maramba-river-lodge",
+    description: "A family-friendly lodge set on the banks of the Maramba River, just 4km from Victoria Falls. The lodge offers comfortable chalets surrounded by beautiful indigenous gardens teeming with birdlife and monkeys.\n\nFacilities include a large swimming pool, riverside bar, and a camping area for those on a tighter budget. The lodge is a popular base for exploring all of Livingstone's attractions.",
+    type: "lodge", address: "Off Sichango Road, Livingstone, Zambia",
+    amenities: ["WiFi", "Pool", "Restaurant", "Bar", "Garden", "Parking", "Camping"],
+    images: ["https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=1200&h=800&fit=crop", "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&h=800&fit=crop"],
+    rating: 4.4,
+    roomTypes: [
+      { id: "rt1", name: "River Chalet", description: "Comfortable chalet with views of the Maramba River.", maxOccupancy: 2, images: [], pricing: [
+        { tier: "LOCAL", season: "PEAK", price: 70 }, { tier: "LOCAL", season: "HIGH", price: 55 }, { tier: "LOCAL", season: "LOW", price: 45 },
+        { tier: "SADC", season: "PEAK", price: 95 }, { tier: "SADC", season: "HIGH", price: 78 }, { tier: "SADC", season: "LOW", price: 62 },
+        { tier: "INTERNATIONAL", season: "PEAK", price: 140 }, { tier: "INTERNATIONAL", season: "HIGH", price: 115 }, { tier: "INTERNATIONAL", season: "LOW", price: 90 },
+      ]},
+    ],
+  },
+};
+
 async function getAccommodation(slug: string) {
   try {
     const { db } = await import("@/lib/db");
@@ -173,8 +257,7 @@ async function getAccommodation(slug: string) {
     });
     return acc;
   } catch {
-    if (slug === fallbackAccommodation.slug) return fallbackAccommodation;
-    return null;
+    return fallbackAccommodations[slug] ?? null;
   }
 }
 
@@ -187,7 +270,7 @@ export async function generateStaticParams() {
     });
     return accs.map((a) => ({ slug: a.slug }));
   } catch {
-    return [{ slug: "royal-livingstone-hotel" }];
+    return Object.keys(fallbackAccommodations).map((slug) => ({ slug }));
   }
 }
 
