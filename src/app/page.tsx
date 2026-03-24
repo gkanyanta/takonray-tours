@@ -19,6 +19,7 @@ import {
   TreePine,
 } from "lucide-react";
 import { HeroSearch } from "@/components/home/hero-search";
+import { HeroSlideshow } from "@/components/home/hero-slideshow";
 
 export const metadata = {
   title: "Takonray Tours | Discover the Magic of Livingstone, Zambia",
@@ -237,26 +238,21 @@ export default async function HomePage() {
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1568625502763-2a5ec6a94c47?w=1920&h=1080&fit=crop')",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-charcoal/70 via-brand-charcoal/50 to-brand-charcoal/80" />
+      {/* Hero Slideshow Section */}
+      <section className="relative flex min-h-[100vh] items-center justify-center overflow-hidden">
+        <HeroSlideshow />
         <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-          <Badge className="mb-6 bg-brand-amber/90 px-4 py-1 text-sm text-white">
+          <Badge className="mb-6 border-none bg-amber-500/90 px-4 py-1.5 text-sm font-medium text-white shadow-lg">
             Livingstone, Zambia
           </Badge>
-          <h1 className="font-heading text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="font-heading text-4xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
             Discover the Magic
             <br />
-            <span className="text-brand-amber">of Livingstone</span>
+            <span className="bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent">
+              of Livingstone
+            </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl">
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/90 drop-shadow sm:text-xl">
             Stand before the thundering Victoria Falls, cruise the mighty
             Zambezi River, and embark on unforgettable African adventures. Your
             journey of a lifetime starts here.
@@ -266,7 +262,7 @@ export default async function HomePage() {
             <Link href="/tours">
               <Button
                 size="lg"
-                className="h-12 bg-brand-teal px-8 text-base font-semibold text-white hover:bg-brand-teal-600"
+                className="h-13 bg-teal-700 px-8 text-base font-semibold text-white shadow-xl transition-all hover:bg-teal-800 hover:shadow-2xl"
               >
                 <Compass className="size-5" />
                 Explore Tours
@@ -276,14 +272,14 @@ export default async function HomePage() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-12 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20 hover:text-white"
+                className="h-13 border-white/30 bg-white/10 px-8 text-base font-semibold text-white shadow-xl backdrop-blur-sm transition-all hover:bg-white/20 hover:text-white"
               >
                 Book Now
               </Button>
             </Link>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 z-10 h-32 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* Featured Tours */}
